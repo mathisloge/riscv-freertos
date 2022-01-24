@@ -335,4 +335,33 @@ int sprintf(char* str, const char* fmt, ...)
 	va_end(ap);
 	return str - str0;
 }
+
+int vsprintf(char* str, const char* fmt, va_list arg)
+{
+	void vsprintf_putch(int ch, void** data) {
+		char** pstr = (char**) data;
+		**pstr = ch;
+		(*pstr)++;
+	}
+
+	vFormatPrintString(vsprintf_putch, (void**) &str, fmt, arg);
+}
 /*-----------------------------------------------------------*/
+
+
+VP_FILE vp_fopen(const char* filename, int flags, unsigned int mode)
+{
+	return syscall(SYS_open, (long)filename, (long) flags, (long)mode);
+}
+
+size_t vp_fwrite(const void *buffer , size_t size, size_t count, VP_FILE stream)
+{
+	(void)size;
+	return (size_t)syscall(SYS_write, (long)stream, (long) buffer, count);
+}
+
+void vp_fclose(VP_FILE stream)
+{
+	syscall(SYS_close, (long)stream, 0,0);
+}
+

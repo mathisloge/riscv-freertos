@@ -208,7 +208,7 @@ BaseType_t xNetworkInterfaceOutput( xNetworkBufferDescriptor_t * const pxNetwork
 BaseType_t xNetworkInterfaceInitialise( void ) {
     xEMACRxEventSemaphore = xSemaphoreCreateCounting(16, 0);
 
-    register_interrupt_handler(7, ethernet_mac_irq_handler);
+    register_interrupt_handler(7, ethernet_mac_irq_handler, 3);
     xTaskCreate( prvEMACDeferredInterruptHandlerTask, "prvEMACDeferredInterruptHandlerTask", 1000, NULL, 3, NULL );
     
     if(IsDataAvailable() && uxSemaphoreGetCount(xEMACRxEventSemaphore) == 0)

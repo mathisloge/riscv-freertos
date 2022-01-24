@@ -1,0 +1,17 @@
+{
+    "files.associations": {
+        "trcstreamingport.h": "c",
+        "tcpip.h": "c",
+        "cstdio": "c",
+        "stdio.h": "c",
+        "trcrecorder.h": "c",
+        "stdarg.h": "c",
+        "file.h": "c",
+        "libc-header-start.h": "c",
+        "cstdarg": "c",
+        "trcstreamingconfig.h": "c"
+    },
+    "files.watcherExclude": {
+        "**/target": true
+    }
+}

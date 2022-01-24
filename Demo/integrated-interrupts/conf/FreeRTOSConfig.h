@@ -98,6 +98,7 @@ extern uint32_t SystemCoreClock;
 #define configTOTAL_HEAP_SIZE		( ( size_t ) ( 100 * 1024 ) )
 #define configMAX_TASK_NAME_LEN			( 16 )
 #define configUSE_TRACE_FACILITY		1
+#include "trcRecorder.h" /* Should be in the end, after the #define. */
 #define configUSE_16_BIT_TICKS			0
 #define configIDLE_SHOULD_YIELD			1
 #define configUSE_MUTEXES				1

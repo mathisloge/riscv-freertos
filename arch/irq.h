@@ -5,7 +5,7 @@
 
 typedef BaseType_t (*irq_handler_t)(void);
 
-void register_interrupt_handler(uint32_t irq_id, irq_handler_t fn);
+void register_interrupt_handler(uint32_t irq_id, irq_handler_t fn, uint8_t prio);
 
 #define portYIELD_FROM_ISR( xHigherPriorityTaskWoken )      \
     if ( (xHigherPriorityTaskWoken) == pdTRUE ) {           \

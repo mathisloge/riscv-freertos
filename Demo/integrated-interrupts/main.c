@@ -9,6 +9,7 @@
 #include "arch/syscalls.h"
 #include "arch/clib.h"
 #include "arch/irq.h"
+#include "trcRecorder.h"
 
 /*
  * FreeRTOS hook for when malloc fails, enable in FreeRTOSConfig.
@@ -38,15 +39,18 @@ static const unsigned mainDELAY_LOOP_COUNT = 10000;
 
 SemaphoreHandle_t sem;
 
-
+static traceHandle trace_sensor_handle;
 BaseType_t sensor_irq_handler() {    
     BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
+	vTraceStoreISRBegin(trace_sensor_handle);
     BaseType_t ans = xSemaphoreGiveFromISR(sem, &pxHigherPriorityTaskWoken);
     
     // Note: use *portRETURN_FROM_ISR* to return to the task that was interrupted, and use *portYIELD_FROM_ISR* to trigger a scheduler context switch (if necessary) in order to immediately return to the woken task
     
 	//portRETURN_FROM_ISR;
 	portYIELD_FROM_ISR( pxHigherPriorityTaskWoken );
+
+	vTraceStoreISREnd(trace_sensor_handle);
 }
 
 void vTaskSomething(void *pvParameters) {
@@ -61,7 +65,7 @@ void vTaskSomething(void *pvParameters) {
 
 void vTaskDumpSensorData(void *pvParameters) {
     const TickType_t xDelay100ms = pdMS_TO_TICKS( 100 );
-    for (int k=0; k<5; ++k) {  //NOTE: terminating loop only for demonstration
+    for (int k=0; k<10; ++k) {  //NOTE: terminating loop only for demonstration
         BaseType_t ans = xSemaphoreTake(sem, xDelay100ms);
         if (ans == pdFALSE) {
             printf("Dump Task sensor data not available @%d\n", xTaskGetTickCount());
@@ -73,11 +77,15 @@ void vTaskDumpSensorData(void *pvParameters) {
 	        *TERMINAL_ADDR = '\n';
         }
     }
-    exit(0);
+	vTraceStop();
+	vTaskDelay(20UL / portTICK_PERIOD_MS);
+	exit(0);
 }
 
 int main() {
-	register_interrupt_handler(2, sensor_irq_handler);
+	trace_sensor_handle = xTraceSetISRProperties("ISRSensor", 1);
+	vTraceEnable(TRC_START);
+	register_interrupt_handler(2, sensor_irq_handler, 1);
 	
 	*SENSOR_SCALER_REG_ADDR = 10;
 	*SENSOR_FILTER_REG_ADDR = 2;

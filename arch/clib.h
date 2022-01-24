@@ -72,10 +72,17 @@
 
 #ifndef CLIB_H
 #define CLIB_H
+#include <stddef.h>
+#include <stdarg.h>
+typedef int VP_FILE;
 
 void exit(int code);
 int printf(const char* fmt, ...);
 int sprintf(char* str, const char* fmt, ...);
+int vsprintf(char* str, const char* fmt, va_list arg);
 
+VP_FILE vp_fopen(const char* filename, int flags, unsigned int mode);
+size_t vp_fwrite(const void *buffer , size_t size, size_t count, VP_FILE stream);
+void vp_fclose(VP_FILE stream);
 #endif /* CLIB_H */
 

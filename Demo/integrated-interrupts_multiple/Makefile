@@ -69,12 +69,6 @@ FREERTOS_SRC = \
 	$(FREERTOS_SOURCE_DIR)/event_groups.c \
 	$(FREERTOS_SOURCE_DIR)/portable/MemMang/heap_2.c
 
-FREERTOS_TRACE_SRC = \
-	$(FREERTOS_TRACE_DIR)/trcInternalBuffer.c \
-	$(FREERTOS_TRACE_DIR)/trcKernelPort.c \
-	$(FREERTOS_TRACE_DIR)/trcSnapshotRecorder.c \
-	$(FREERTOS_TRACE_DIR)/trcStreamingRecorder.c \
-	$(FREERTOS_TRACE_DIR)/streamports/File/trcStreamingPort.c
 
 APP_SOURCE_DIR	= ../Common/Minimal
 
@@ -95,15 +89,12 @@ DEMO_SRC = \
 INCLUDES = \
 	-I. \
 	-I$(ARCH_DIR) \
-	-I$(ARCH_DIR)/../\
+        -I$(ARCH_DIR)/../\
 	-I./conf \
 	-I./include \
 	-I$(FREERTOS_SOURCE_DIR)/include \
 	-I../Common/include \
-	-I$(FREERTOS_SOURCE_DIR)/portable/GCC/RISCV \
-	-I$(FREERTOS_TRACE_DIR)/include \
-	-I$(FREERTOS_TRACE_DIR)/config \
-	-I$(FREERTOS_TRACE_DIR)/streamports/File/include \
+	-I$(FREERTOS_SOURCE_DIR)/portable/GCC/RISCV
 
 CFLAGS = \
 	$(WARNINGS) $(INCLUDES) \
@@ -116,13 +107,12 @@ GCCVER 	= $(shell $(GCC) --version | grep gcc | cut -d" " -f9)
 # Define all object files.
 #
 RTOS_OBJ = $(FREERTOS_SRC:.c=.o)
-TRACE_OBJ = $(FREERTOS_TRACE_SRC:.c=.o)
 APP_OBJ  = $(APP_SRC:.c=.o)
 PORT_OBJ = $(PORT_SRC:.c=.o)
 DEMO_OBJ = $(DEMO_SRC:.c=.o)
 PORT_ASM_OBJ = $(PORT_ASM:.S=.o)
 CRT0_OBJ = $(CRT0:.S=.o)
-OBJS = $(CRT0_OBJ) $(PORT_ASM_OBJ) $(PORT_OBJ) $(TRACE_OBJ) $(RTOS_OBJ) $(DEMO_OBJ) $(APP_OBJ)
+OBJS = $(CRT0_OBJ) $(PORT_ASM_OBJ) $(PORT_OBJ) $(RTOS_OBJ) $(DEMO_OBJ) $(APP_OBJ)
 
 LDFLAGS	 = -T $(ARCH_DIR)/link.ld -nostartfiles -static -nostdlib
 LIBS	 = -L$(CCPATH)/lib/gcc/$(TARGET)/$(GCCVER) \
