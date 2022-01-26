@@ -65,7 +65,7 @@ void vTaskSomething(void *pvParameters) {
 
 void vTaskDumpSensorData(void *pvParameters) {
     const TickType_t xDelay100ms = pdMS_TO_TICKS( 100 );
-    for (int k=0; k<10; ++k) {  //NOTE: terminating loop only for demonstration
+    for (int k=0; k<5; ++k) {  //NOTE: terminating loop only for demonstration
         BaseType_t ans = xSemaphoreTake(sem, xDelay100ms);
         if (ans == pdFALSE) {
             printf("Dump Task sensor data not available @%d\n", xTaskGetTickCount());

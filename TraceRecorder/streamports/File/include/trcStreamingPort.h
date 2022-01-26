@@ -27,7 +27,7 @@ void openFile(char* fileName);
 /* This define will determine whether to use the internal PagedEventBuffer or not.
 If file writing creates additional trace events (i.e. it uses semaphores or mutexes), 
 then the paged event buffer must be enabled to avoid infinite recursion. */
-#define TRC_STREAM_PORT_USE_INTERNAL_BUFFER 1
+#define TRC_STREAM_PORT_USE_INTERNAL_BUFFER 0
 
 #define TRC_STREAM_PORT_READ_DATA(_ptrData, _size, _ptrBytesRead) 0 /* Does not read commands from Tz (yet) */
 

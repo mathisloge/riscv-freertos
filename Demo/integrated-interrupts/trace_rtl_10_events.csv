@@ -1,0 +1,50 @@
+65,,=== Trace Start ===
+67,(startup),Actor Ready: Task 1
+68,(startup),Actor Ready: Task 2
+70,(startup),Actor Ready: IDLE
+72,(startup),Actor Ready: Tmr Svc
+73,Task 2,Context switch on CPU 0 to Task 2
+73,Task 2,xSemaphoreTake(0x800545DC, 100) blocks
+74,Task 1,Context switch on CPU 0 to Task 1
+165,#WFR,Context switch on CPU 0 to #WFR
+165,#WFR,xSemaphoreGiveFromISR(0x800545DC)
+165,#WFR,Actor Ready: Task 2
+165,Task 2,Context switch on CPU 0 to Task 2
+165,Task 2,xSemaphoreTake(0x800545DC, 100) returns after 92 µs
+167,Task 2,xSemaphoreTake(0x800545DC, 100) blocks
+167,Task 1,Context switch on CPU 0 to Task 1
+173,Task 1,Actor Ready: TzCtrl
+173,Task 1,Context switch on CPU 0 to Task 1
+265,#WFR,Context switch on CPU 0 to #WFR
+265,#WFR,xSemaphoreGiveFromISR(0x800545DC)
+265,#WFR,Actor Ready: Task 2
+265,Task 2,Context switch on CPU 0 to Task 2
+265,Task 2,xSemaphoreTake(0x800545DC, 100) returns after 98 µs
+267,Task 2,xSemaphoreTake(0x800545DC, 100) blocks
+267,Task 1,Context switch on CPU 0 to Task 1
+273,Task 1,Actor Ready: TzCtrl
+274,Task 1,Context switch on CPU 0 to Task 1
+365,#WFR,Context switch on CPU 0 to #WFR
+365,#WFR,xSemaphoreGiveFromISR(0x800545DC)
+365,#WFR,Actor Ready: Task 2
+365,Task 2,Context switch on CPU 0 to Task 2
+365,Task 2,xSemaphoreTake(0x800545DC, 100) returns after 98 µs
+367,Task 2,xSemaphoreTake(0x800545DC, 100) blocks
+367,Task 1,Context switch on CPU 0 to Task 1
+374,Task 1,Actor Ready: TzCtrl
+374,Task 1,Context switch on CPU 0 to Task 1
+465,#WFR,Context switch on CPU 0 to #WFR
+465,#WFR,xSemaphoreGiveFromISR(0x800545DC)
+465,#WFR,Actor Ready: Task 2
+465,Task 2,Context switch on CPU 0 to Task 2
+465,Task 2,xSemaphoreTake(0x800545DC, 100) returns after 98 µs
+467,Task 2,xSemaphoreTake(0x800545DC, 100) blocks
+467,Task 1,Context switch on CPU 0 to Task 1
+474,Task 1,Actor Ready: TzCtrl
+474,Task 1,Context switch on CPU 0 to Task 1
+565,#WFR,Context switch on CPU 0 to #WFR
+565,#WFR,xSemaphoreGiveFromISR(0x800545DC)
+565,#WFR,Actor Ready: Task 2
+565,Task 2,Context switch on CPU 0 to Task 2
+565,Task 2,xSemaphoreTake(0x800545DC, 100) returns after 98 µs
+565,,=== Trace End ===
