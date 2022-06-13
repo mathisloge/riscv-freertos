@@ -1,0 +1,33 @@
+
+Task (startup)
+Start time	Execution time	Response time	Fragments
+65	15	15	1
+
+Task Task 1
+Start time	Execution time	Response time	Fragments
+73	476	502	8
+
+Task TzCtrl
+Start time	Execution time	Response time	Fragments
+80	0	0	1
+179	0	1	1
+280	0	1	1
+380	0	1	1
+480	0	1	1
+
+Task Task 2
+Start time	Execution time	Response time	Fragments
+75	1	5	1
+175	2	4	1
+275	2	4	1
+375	2	4	1
+475	2	4	1
+575	0	2	1
+
+Interrupt #WFR
+Start time	Execution time	Response time	Fragments
+175	2	2	1
+275	2	2	1
+375	2	2	1
+475	2	2	1
+575	2	2	1

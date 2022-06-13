@@ -1,0 +1,49 @@
+65,,=== Trace Start ===
+73,(startup),Actor Ready: Task 1
+75,(startup),Actor Ready: Task 2
+76,(startup),Actor Ready: IDLE
+79,(startup),Actor Ready: Tmr Svc
+79,Task 2,Context switch on CPU 0 to Task 2
+80,Task 2,xSemaphoreTake(0x800545DC, 100) blocks
+80,Task 1,Context switch on CPU 0 to Task 1
+175,#WFR,Context switch on CPU 0 to #WFR
+175,#WFR,xSemaphoreGiveFromISR(0x800545DC)
+175,#WFR,Actor Ready: Task 2
+177,Task 2,Context switch on CPU 0 to Task 2
+177,Task 2,xSemaphoreTake(0x800545DC, 100) returns after 98 µs
+179,Task 2,xSemaphoreTake(0x800545DC, 100) blocks
+179,Task 2,Actor Ready: TzCtrl
+180,Task 1,Context switch on CPU 0 to Task 1
+275,#WFR,Context switch on CPU 0 to #WFR
+275,#WFR,xSemaphoreGiveFromISR(0x800545DC)
+275,#WFR,Actor Ready: Task 2
+277,Task 2,Context switch on CPU 0 to Task 2
+277,Task 2,xSemaphoreTake(0x800545DC, 100) returns after 98 µs
+279,Task 2,xSemaphoreTake(0x800545DC, 100) blocks
+279,Task 1,Context switch on CPU 0 to Task 1
+280,Task 1,Actor Ready: TzCtrl
+280,Task 1,Context switch on CPU 0 to Task 1
+375,#WFR,Context switch on CPU 0 to #WFR
+375,#WFR,xSemaphoreGiveFromISR(0x800545DC)
+375,#WFR,Actor Ready: Task 2
+377,Task 2,Context switch on CPU 0 to Task 2
+377,Task 2,xSemaphoreTake(0x800545DC, 100) returns after 98 µs
+379,Task 2,xSemaphoreTake(0x800545DC, 100) blocks
+379,Task 1,Context switch on CPU 0 to Task 1
+380,Task 1,Actor Ready: TzCtrl
+380,Task 1,Context switch on CPU 0 to Task 1
+475,#WFR,Context switch on CPU 0 to #WFR
+475,#WFR,xSemaphoreGiveFromISR(0x800545DC)
+475,#WFR,Actor Ready: Task 2
+477,Task 2,Context switch on CPU 0 to Task 2
+477,Task 2,xSemaphoreTake(0x800545DC, 100) returns after 98 µs
+479,Task 2,xSemaphoreTake(0x800545DC, 100) blocks
+479,Task 1,Context switch on CPU 0 to Task 1
+480,Task 1,Actor Ready: TzCtrl
+481,Task 1,Context switch on CPU 0 to Task 1
+575,#WFR,Context switch on CPU 0 to #WFR
+575,#WFR,xSemaphoreGiveFromISR(0x800545DC)
+575,#WFR,Actor Ready: Task 2
+577,Task 2,Context switch on CPU 0 to Task 2
+577,Task 2,xSemaphoreTake(0x800545DC, 100) returns after 98 µs
+577,,=== Trace End ===

@@ -362,6 +362,6 @@ size_t vp_fwrite(const void *buffer , size_t size, size_t count, VP_FILE stream)
 
 void vp_fclose(VP_FILE stream)
 {
-	syscall(SYS_close, (long)stream, 0,0);
+	syscall(SYS_close, (long)stream, 0, 0);
 }
 
